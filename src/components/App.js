@@ -17,44 +17,28 @@ function App() {
     setSelectedCard(card);
   }
 
-  //видимость попапов
-  const [popups, setPopups] = React.useState({
-    isEditProfilePopupOpen: false,
-    isAddPlacePopupOpen: false,
-    isEditAvatarPopupOpen: false,
-  });
+  const [isEditProfilePopupOpen, setEditProfilePopupState] = React.useState(false);
+	const [isAddPlacePopupOpen, setAddPlacePopupState] = React.useState(false);
+	const [isEditAvatarPopupOpen, setEditAvatarPopupState] = React.useState(false);
+  
 
   // нажатие на кнопки
-  function handleEditAvatarClick(evt) {
-    setPopups({
-      ...popups, 
-      isEditAvatarPopupOpen: true, 
-    });
-  }
-
-  function handleEditProfileClick(evt) {
-    setPopups({
-      ...popups, 
-      isEditProfilePopupOpen: true, 
-    });
-  }
-
-  function handleAddPlaceClick(evt) {
-    setPopups({
-      ...popups, 
-      isAddPlacePopupOpen: true, 
-    });
-  }
+  function handleEditAvatarClick() {
+		setEditAvatarPopupState(true)
+	}
+	function handleEditProfileClick() {
+		setEditProfilePopupState(true)
+	}
+	function handleAddPlaceClick() {
+		setAddPlacePopupState(true)
+	}
 
   // закрытие попапов
   function closeAllPopups(evt) {
-    setPopups({
-      isEditProfilePopupOpen: false,
-      isAddPlacePopupOpen: false,
-      isEditAvatarPopupOpen: false,
-    });
-
-    setSelectedCard({});
+		setEditAvatarPopupState(false)
+		setEditProfilePopupState(false)
+		setAddPlacePopupState(false)
+		setSelectedCard(false)
   }
 
   return (
@@ -62,9 +46,6 @@ function App() {
       <Header logo={logo} />
 
       <Main
-        avatar={avatar}
-        name="Жак-Ив Кусто"
-        about="Исследователь океана"
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
         onEditAvatar={handleEditAvatarClick}
@@ -78,7 +59,7 @@ function App() {
         name="edit-profile"
         title="Редактировать профиль"
         buttonSubmitText="Cохранить"
-        isOpen={popups.isEditProfilePopupOpen}
+        isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
       >
         <fieldset className="form__fieldset">
@@ -108,12 +89,38 @@ function App() {
           <span className="popup__error profileCaption-error"></span>
         </fieldset>
       </PopupWithForm>
+      
+      <PopupWithForm
+        name="confirm-delete"
+        title="Вы уверены?"
+        buttonSubmitText="Да"
+      />
+
+      <PopupWithForm
+        name="edit-avatar"
+        title="Обновить аватар"
+        buttonSubmitText="Cохранить"
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
+      >
+        <fieldset className="form__fieldset">
+          <input
+            id="avatar-link-input"
+            className="form__input form__input_field_link"
+            name="link"
+            placeholder="Сcылка на аватар"
+            type="url"
+            required
+          />
+          <span className="popup__error avatar-link-input-error"></span>
+        </fieldset>
+      </PopupWithForm>
 
       <PopupWithForm
         name="add-place"
         title="Новое место"
         buttonSubmitText="Cоздать"
-        isOpen={popups.isAddPlacePopupOpen}
+        isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
       >
         <fieldset className="form__fieldset">
@@ -142,33 +149,7 @@ function App() {
         </fieldset>
       </PopupWithForm>
 
-      <PopupWithForm
-        name="edit-avatar"
-        title="Обновить аватар"
-        buttonSubmitText="Cохранить"
-        isOpen={popups.isEditAvatarPopupOpen}
-        onClose={closeAllPopups}
-      >
-        <fieldset className="form__fieldset">
-          <input
-            id="avatar-link-input"
-            className="form__input form__input_field_link"
-            value=""
-            name="link"
-            placeholder="Сcылка на аватар"
-            type="url"
-            required
-          />
-          <span className="popup__error avatar-link-input-error"></span>
-        </fieldset>
-      </PopupWithForm>
-
-      <PopupWithForm
-        name="confirm-delete"
-        title="Вы уверены?"
-        buttonSubmitText="Да"
-      />
-
+      
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
     </div>
   );

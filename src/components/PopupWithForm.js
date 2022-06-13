@@ -4,13 +4,11 @@ function PopupWithForm(props) {
   return (
     <div className={`popup popup_type_${props.name} ${props.isOpen && 'popup_opened'}`}  >
       {}
-      {}
 
       <div className="popup__frame">
         <form name={props.name} className={`form form-${props.name}`}>
           <h2 className="form__title">{props.title}</h2>
 
-          {}
           {props.children}
 
           <button className="popup__button popup__button_type_save" type="submit">{props.buttonSubmitText}</button>
