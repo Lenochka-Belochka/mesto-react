@@ -62,7 +62,6 @@ function App() {
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
       >
-        <fieldset className="form__fieldset">
           <input
             className="form__input form__input_type_name"
             type="text"
@@ -87,14 +86,7 @@ function App() {
             maxLength="200"
           />
           <span className="popup__error profileCaption-error"></span>
-        </fieldset>
       </PopupWithForm>
-      
-      <PopupWithForm
-        name="confirm-delete"
-        title="Вы уверены?"
-        buttonSubmitText="Да"
-      />
 
       <PopupWithForm
         name="edit-avatar"
@@ -103,7 +95,6 @@ function App() {
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
       >
-        <fieldset className="form__fieldset">
           <input
             id="avatar-link-input"
             className="form__input form__input_field_link"
@@ -113,17 +104,15 @@ function App() {
             required
           />
           <span className="popup__error avatar-link-input-error"></span>
-        </fieldset>
       </PopupWithForm>
 
-      <PopupWithForm
+       <PopupWithForm
         name="add-place"
         title="Новое место"
         buttonSubmitText="Cоздать"
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
       >
-        <fieldset className="form__fieldset">
           <input
             className="form__input form__input_type_place"
             type="text"
@@ -146,10 +135,14 @@ function App() {
             required
           />
           <span className="popup__error photoLink-error"></span>
-        </fieldset>
       </PopupWithForm>
 
-      
+      <PopupWithForm
+        name="confirm-delete"
+        title="Вы уверены?"
+        buttonSubmitText="Да"
+      />
+
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
     </div>
   );
