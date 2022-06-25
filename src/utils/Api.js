@@ -117,7 +117,18 @@ export class Api {
     })
       .then((res) => this._checkResponse(res))
   }
+  changeLikeCardStatus(cardId, isLiked) {
+    const method = isLiked ? "DELETE" : "PUT";
+    const request = this._baseUrl + `/cards/${cardId}/likes`;
+    return fetch(request, {
+      method: method,
+      headers: this._headers,
+    }).then((res) => this._checkResponse(res));
+  }
 }
+
+
+
 // Здесь создаем экземпляр класса Api с нужными параметрами, включая токен, и экспортируем этот экземпляр вместо самого класса
 export const api = new Api({
   baseUrl: `https://mesto.nomoreparties.co/v1/${cohort}`,

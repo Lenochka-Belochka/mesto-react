@@ -29,6 +29,7 @@
 @import url(./blocks/element/__picture/element__picture.css);
 @import url(./blocks/element/__button/_active/element__button_active.css);
 @import url(./blocks/element/__button/__delete/element__button_delete.css);
+@import url(./blocks/element/__button/__delete/element__button_delete-hidden.css);
 @import url(./blocks/element/__likes-number/element__likes-number.css);
 
 @import url(./blocks/footer/footer.css);

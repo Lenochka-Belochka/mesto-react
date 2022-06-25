@@ -2,8 +2,10 @@ import React from "react";
 
 function ImagePopup(props) {
   return (
-    <div className={`popup popup_type_card ${props.card._id && 'popup_opened'}`}>
-    <div className="popup__container">
+    <div
+      className={`popup popup_type_card ${props.card._id && "popup_opened"}`}
+    >
+      <div className="popup__container">
         <button
           className="popup__button popup__button_type_close"
           type="reset"
@@ -16,7 +18,7 @@ function ImagePopup(props) {
           className="popup__image"
         />
         <h2 className="popup__title">{props.card.name}</h2>
-    </div>
+      </div>
     </div>
   );
 }
