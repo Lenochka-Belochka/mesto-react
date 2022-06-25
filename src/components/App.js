@@ -21,6 +21,11 @@ function App() {
     avatar: "",
     _id: "",
   });
+  const [isEditProfilePopupOpen, setEditProfilePopupState] =
+  React.useState(false);
+const [isAddPlacePopupOpen, setAddPlacePopupState] = React.useState(false);
+const [isEditAvatarPopupOpen, setEditAvatarPopupState] =
+  React.useState(false);
 
   // запрос в API за профилем пользователя
   React.useEffect(() => {
@@ -85,12 +90,7 @@ function App() {
     setSelectedCard(card);
   }
 
-  const [isEditProfilePopupOpen, setEditProfilePopupState] =
-    React.useState(false);
-  const [isAddPlacePopupOpen, setAddPlacePopupState] = React.useState(false);
-  const [isEditAvatarPopupOpen, setEditAvatarPopupState] =
-    React.useState(false);
-
+ 
   // нажатие на кнопки
   function handleEditAvatarClick() {
     setEditAvatarPopupState(true);
@@ -163,8 +163,6 @@ function App() {
 
         <Main
           avatar={avatar}
-          name="Жак-Ив Кусто"
-          about="Исследователь океана"
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick}
