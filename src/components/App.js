@@ -152,7 +152,7 @@ function App() {
         closeAllPopups();
       })
       .catch((err) => {
-        console.log(`Ошибка при сохранении новой карточки: ${err}!`);
+        console.log(`Ошибка сохранения новой карточки: ${err}!`);
       });
   }
 
